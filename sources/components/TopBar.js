@@ -50,8 +50,10 @@ export default class TopBar extends React.Component {
                 }
 
                 <Text
+                    numberOfLines = {1}
                     style = {{
                         color: this.tintColor,
+                        flex: 1,
                         fontWeight: "bold",
                         fontSize: 24,
                         marginLeft: 10

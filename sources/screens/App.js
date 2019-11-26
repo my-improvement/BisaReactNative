@@ -1,23 +1,27 @@
 import React from 'react'
 
-import SafeAreaViewAndStatusBar from '../components/SafeAreaViewAndStatusBar'
-import TopBar from '../components/TopBar'
+import {
+    createAppContainer
+} from 'react-navigation'
 
-const baseColor = "crimson"
+import {
+    createStackNavigator,
+    StackViewStyleInterpolator
+} from 'react-navigation-stack'
 
-export default class App extends React.Component {
-    render() {
-        return (
-            <SafeAreaViewAndStatusBar
-                barStyle = "light-content"
-                color = {baseColor}
-            >
-                <TopBar
-                    color = {baseColor}
-                    tintColor = "white"
-                    title = "Bisa React-Native"
-                />
-            </SafeAreaViewAndStatusBar>
-        )
+import Home from './Home'
+import Detail from './Detail'
+
+export default createAppContainer(createStackNavigator(
+    {
+        Home,
+        Detail
+    },
+    {
+        defaultNavigationOptions: {
+            gesturesEnabled: true,
+            header: null
+        },
+        transitionConfig: () => ({screenInterpolator: screenProps => StackViewStyleInterpolator.forHorizontal(screenProps)})
     }
-}
+))
